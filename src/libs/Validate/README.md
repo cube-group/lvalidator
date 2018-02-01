@@ -1,6 +1,6 @@
 ## LValidator是一个简单的验证类
 
-#使用demo 快速验证单个规则
+#使用demo 快速验证单个规则 
 ```
 LValidator::isUrl("http://www.baidu.com"));
 LValidator::isEmail("abc@abc.com"));
@@ -31,13 +31,13 @@ if ($validator->validate()) {
 输出
 ```
 array (size=3)
-  'email' =>
+  'email' => 
     array (size=1)
       0 => string 'Email是无效邮箱, 非法值abc' (length=34)
-  'name' =>
+  'name' => 
     array (size=1)
       0 => string 'Name不能为空' (length=16)
-  'age' =>
+  'age' => 
     array (size=1)
       0 => string 'Age只能是整数(0-9)' (length=23)
 ```
@@ -63,13 +63,13 @@ if ($validator->validate()) {
 输出
 ```
 array (size=3)
-  'name' =>
+  'name' => 
     array (size=1)
       0 => string '用户名不能为空' (length=21)
-  'age' =>
+  'age' => 
     array (size=1)
       0 => string '年龄只能是整数(0-9)' (length=26)
-  'email' =>
+  'email' => 
     array (size=1)
       0 => string '我的邮箱是无效邮箱, 非法值abc' (length=41)
 ```
@@ -96,10 +96,10 @@ if ($validator->validate()) {
 输出
 ```
 array (size=2)
-  'demo.name' =>
+  'demo.name' => 
     array (size=1)
       0 => string 'Demo.name不能为空' (length=21)
-  'demo.age' =>
+  'demo.age' => 
     array (size=1)
       0 => string 'Demo.age只能是整数(0-9)' (length=28)
 ```
