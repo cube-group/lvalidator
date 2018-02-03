@@ -2,41 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85ab9720-16c6-47df-942c-e5d54dba624b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/libs/Utils/ArrayTrait.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/libs/Utils/Strings.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/MobileValidator.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/BankCard.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Integer.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Alpha.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/AlphaValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/AlphaNum.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/AlphaNumValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Boolean.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/BoolValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/CarPlate.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/CarPlateValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Compare.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/CompareValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Contains.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/ContainsValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Date.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/DateValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/DateAfter.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/DateAfterValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/DateBefore.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/DateBeforeValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Different.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/DiffValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Email.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/EmailValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Func.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/FuncValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/In.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/InValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Ip.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/IpValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Json.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/JsonValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Length.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/LengthValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/NotIn.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/NotInValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Numeric.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/NumericValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Regex.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/RegexValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Required.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/RequiredValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Same.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/SameValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Slug.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/SlugValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Tel.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/TelValidator.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/libs/Validate/rules/Url.php" afterPath="$PROJECT_DIR$/src/libs/Validate/rules/UrlValidator.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/libs/Validate/README.md" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/libs/Validate/LValidator.php" afterPath="$PROJECT_DIR$/src/libs/Validate/LValidator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/libs/Validate/README.md" afterPath="$PROJECT_DIR$/src/libs/Validate/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/libs/autoload.php" afterPath="$PROJECT_DIR$/src/libs/autoload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/TestLValidator.php" afterPath="$PROJECT_DIR$/src/test/TestLValidator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="LVALIDATOR.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,6 +34,29 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="258">
+                <caret line="92" column="25" lean-forward="true" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LICENSE" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LICENSE">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ArrayTrait.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/libs/Utils/ArrayTrait.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -74,36 +65,6 @@
               <folding>
                 <element signature="e#30#48#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegexValidator.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/libs/Validate/rules/RegexValidator.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequiredValidator.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/libs/Validate/rules/RequiredValidator.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SameValidator.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/libs/Validate/rules/SameValidator.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -138,14 +99,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LValidator.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LValidator.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/libs/Validate/LValidator.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-              <folding>
-                <element signature="e#33#46#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="357">
+              <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -173,7 +132,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/test/TestLValidator.php" />
         <option value="$PROJECT_DIR$/src/libs/autoload.php" />
         <option value="$PROJECT_DIR$/src/libs/Utils/ArrayTrait.php" />
@@ -205,6 +163,7 @@
         <option value="$PROJECT_DIR$/src/libs/Validate/rules/TelValidator.php" />
         <option value="$PROJECT_DIR$/src/libs/Validate/rules/UrlValidator.php" />
         <option value="$PROJECT_DIR$/src/libs/Validate/LValidator.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -366,6 +325,7 @@
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="FullScreen" value="true" />
     <property name="ignore_missing_gitignore" value="true" />
+    <property name="GO_FMT" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -514,12 +474,27 @@
       <option name="presentableId" value="Default" />
       <updated>1517490009660</updated>
       <workItem from="1517490010983" duration="147000" />
-      <workItem from="1517628267790" duration="442000" />
+      <workItem from="1517628267790" duration="626000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1517628737918</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1517628737918</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update">
+      <created>1517628812066</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1517628812066</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="589000" />
+    <option name="totallyTimeSpent" value="773000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -551,6 +526,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
@@ -575,41 +554,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1929">
-            <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/libs/Utils/Strings.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="6" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/libs/Validate/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="272">
-            <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-            <folding />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -841,14 +790,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/TestLValidator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/libs/Utils/ArrayTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -861,11 +802,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/libs/Validate/LValidator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-          <folding>
-            <element signature="e#33#46#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="357">
+          <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/libs/Validate/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="425">
+            <caret line="25" column="40" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="511" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/TestLValidator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="258">
+            <caret line="92" column="25" lean-forward="true" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

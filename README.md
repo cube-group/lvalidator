@@ -1,5 +1,6 @@
 # LValidator是一个简单的验证类
 支持批量验证表单数据、自定义错误信息，简化大量的验证判断代码，使代码变得加简洁优雅！
+
 ##快速使用
 ```$xslt
 $data = [
@@ -46,6 +47,7 @@ array (size=5)
       0 => string 'lang不能在范围['php', 'go', 'java'], 非法值php' (length=54)
 string 'email是无效邮箱, 非法值abc|age只能是数字|address长度必须>=20|sex必须在['男', '女']范围内|lang不能在范围['php', 'go', 'java'], 非法值php' 
 ```
+
 
 ##快速验证单个规则 
 ```
