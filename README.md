@@ -2,7 +2,7 @@
 支持批量验证表单数据、自定义错误信息，简化大量的验证判断代码，使代码变得加简洁优雅！
 
 ##快速使用
-```$xslt
+```
 $data = [
     'name' => 'chenqionghe',
     'age' => '十八',
@@ -28,7 +28,7 @@ if (!$validator->validate()) {
 }
 ```
 输出
-```$xslt
+```
 array (size=5)
   'email' => 
     array (size=1)
@@ -200,7 +200,7 @@ if (!$val->validate()) {
 }
 ```
 - json(验证json格式)
-```$xslt
+```
 $data = ['json1' => 'abcdef', 'mobile2' => '{"name":"chenqionghe","age":18}'];
 $val = new LValidator($data);
 $val->rules([
@@ -212,7 +212,7 @@ if (!$val->validate()) {
 }
 ```
 - url(验证URL地址)
-```$xslt
+```
 $data = ['url1' => 'abcdef', 'url2' => 'http://www.baidu.com'];
 $val = new LValidator($data);
 $val->rules([
@@ -225,7 +225,7 @@ if (!$val->validate()) {
 
 ```
 - ip(验证IP地址)
- ```$xslt
+ ```
 $data = ['ip1' => 'abcdef', 'ip2' => '127.0.0.1'];
 $val = new LValidator($data);
 $val->rules([
@@ -237,7 +237,7 @@ if (!$val->validate()) {
 }
 ```
 - email(验证邮箱)
-```$xslt
+```
 $data = ['email1' => 'abcdef', 'email2' => 'chenqionghe@sina.com'];
 $val = new LValidator($data);
 $val->rules([
@@ -249,7 +249,7 @@ if (!$val->validate()) {
 }
 ```
 - numeric(验证数字) 
-```$xslt
+```
 $data = ['number1' => '123', 'number2' => 'abcd'];
 $val = new LValidator($data);
 $val->rules([
@@ -297,7 +297,7 @@ if (!$val->validate()) {
 }
 ```
 - bool(验证必须是布尔值)
-```$xslt
+```
 $data = ['eq' => 'abcdef', 'mobile2' => false];
 $val = new LValidator($data);
 $val->rules([
@@ -309,7 +309,7 @@ if (!$val->validate()) {
 }
 ```
 - date(验证必须是时间日期格式)
-```$xslt
+```
 $data = ['date1' => '123abc___', 'date2' => '20180201', 'date3' => '20180201 12:00'];
 $val = new LValidator($data);
 $val->rules([
@@ -322,7 +322,7 @@ if (!$val->validate()) {
 }
 ```
 - tel(验证大陆电话)
-```$xslt
+```
 $data = ['tel1' => '1234abcd', 'tel2' => '089862222222'];
 $val = new LValidator($data);
 $val->rules([
@@ -334,7 +334,7 @@ if (!$val->validate()) {
 }
 ```
 - mobile(验证手机号)
-```$xslt
+```
 $data = ['mobile1' => '1234abcd', 'mobile2' => '13188888888'];
 $val = new LValidator($data);
 $val->rules([
