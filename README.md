@@ -186,7 +186,7 @@ string '用户名不能为空|年龄只能是整数(0-9)|我的邮箱是无效�
 * json         验证json格式
 
 ### 验证规则使用Demo
-- required(验证必传)
+#### required(验证必传)
 设置skipEmpty属性为1可以跳过空验证，但是字段必传
 ```
 $data = ['name' => '','name_isset' => ''];
@@ -199,7 +199,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- json(验证json格式)
+#### json(验证json格式)
 ```
 $data = ['json1' => 'abcdef', 'mobile2' => '{"name":"chenqionghe","age":18}'];
 $val = new LValidator($data);
@@ -211,7 +211,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- url(验证URL地址)
+#### url(验证URL地址)
 ```
 $data = ['url1' => 'abcdef', 'url2' => 'http://www.baidu.com'];
 $val = new LValidator($data);
@@ -224,7 +224,7 @@ if (!$val->validate()) {
 }
 
 ```
-- ip(验证IP地址)
+#### ip(验证IP地址)
  ```
 $data = ['ip1' => 'abcdef', 'ip2' => '127.0.0.1'];
 $val = new LValidator($data);
@@ -236,7 +236,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- email(验证邮箱)
+#### email(验证邮箱)
 ```
 $data = ['email1' => 'abcdef', 'email2' => 'chenqionghe@sina.com'];
 $val = new LValidator($data);
@@ -248,7 +248,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- numeric(验证数字) 
+#### numeric(验证数字) 
 ```
 $data = ['number1' => '123', 'number2' => 'abcd'];
 $val = new LValidator($data);
@@ -260,7 +260,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- alpha(验证英文字母)
+#### alpha(验证英文字母)
 ```
 $data = ['name1' => '123', 'name2' => 'abcd'];
 $val = new LValidator($data);
@@ -272,7 +272,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- alphaNum(验证英文字母+数字)
+#### alphaNum(验证英文字母+数字)
 ```
 $data = ['name1' => '123abc___', 'name2' => '123abc'];
 $val = new LValidator($data);
@@ -284,7 +284,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- slug(英文字母+数字+破折号+下划线)
+#### slug(英文字母+数字+破折号+下划线)
 ```
 $data = ['name1' => '123abc___', 'name2' => '123abc...'];
 $val = new LValidator($data);
@@ -296,7 +296,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- bool(验证必须是布尔值)
+#### bool(验证必须是布尔值)
 ```
 $data = ['eq' => 'abcdef', 'mobile2' => false];
 $val = new LValidator($data);
@@ -308,7 +308,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- date(验证必须是时间日期格式)
+#### date(验证必须是时间日期格式)
 ```
 $data = ['date1' => '123abc___', 'date2' => '20180201', 'date3' => '20180201 12:00'];
 $val = new LValidator($data);
@@ -321,7 +321,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- tel(验证大陆电话)
+#### tel(验证大陆电话)
 ```
 $data = ['tel1' => '1234abcd', 'tel2' => '089862222222'];
 $val = new LValidator($data);
@@ -333,7 +333,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- mobile(验证手机号)
+#### mobile(验证手机号)
 ```
 $data = ['mobile1' => '1234abcd', 'mobile2' => '13188888888'];
 $val = new LValidator($data);
@@ -345,7 +345,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- same(验证字段必须和另一个字段值相同)
+#### same(验证字段必须和另一个字段值相同)
 ```
 $data = ['name1' => 'abc', 'name2' => 'abcd'];
 $val = new LValidator($data);
@@ -357,7 +357,7 @@ if (!$val->validate()) {
 }
 
 ```
-- diff(验证字段必须和另一个字段值不同)
+#### diff(验证字段必须和另一个字段值不同)
 ```
 $data = ['name1' => 'abc', 'name2' => 'abc'];
 $val = new LValidator($data);
@@ -369,7 +369,7 @@ if (!$val->validate()) {
 }
 
 ```
-- compare(对比验证(支持> >= < <= == === != !===)
+#### compare(对比验证(支持> >= < <= == === != !===)
 ```
 $data = ['age' => 18];
 $val = new LValidator($data);
@@ -387,7 +387,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- length(字符串长度对比验证,基于compare验证)
+#### length(字符串长度对比验证,基于compare验证)
 ```
 $data = ['name'=>'a'];
 $val = new LValidator($data);
@@ -405,7 +405,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- contains(必须包含acb)
+#### contains(必须包含acb)
 ```
 $data = ['name1' => "abcd", 'name2' => 'cqhabc'];
 $val = new LValidator($data);
@@ -416,7 +416,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- in(必须在范围[1,2,3])
+#### in(必须在范围[1,2,3])
 ```
 $data = ['name' => "abc", 'lang' => 'abcd'];
 $val = new LValidator($data);
@@ -428,7 +428,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- notIn(必须不在范围[1,2,3])
+#### notIn(必须不在范围[1,2,3])
 ```
 $data = ['name' => "abc", 'lang' => 'php'];
 $val = new LValidator($data);
@@ -440,7 +440,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- regex(正则验证)
+#### regex(正则验证)
 ```
 $data = ['name1' => "abc", 'name2' => 'cqhabc'];
 $val = new LValidator($data);
@@ -452,7 +452,7 @@ if (!$val->validate()) {
 }
 ```
 
-- func(函数或方法验证)
+#### func(函数或方法验证)
 ```
 $data = ['name' => "abc"];
 $val = new LValidator($data);
@@ -464,7 +464,7 @@ if (!$val->validate()) {
     var_dump($val->errorString());
 }
 ```
-- 闭包验证(验证名字必须是helloWorld)
+#### 闭包验证(验证名字必须是helloWorld)
 ```
 $data = ['name1' => "abc"];
 $val = new LValidator($data);
@@ -481,7 +481,7 @@ if (!$val->validate()) {
 
 # 其他方法
 ### 设置字段标签
-- 通过lables批量方法追加, 如果已经在值, 将覆盖旧值
+#### 通过lables批量方法追加, 如果已经在值, 将覆盖旧值
 ```
 $validator->labels([
     'email' => '邮箱地址',
@@ -489,7 +489,7 @@ $validator->labels([
     'boolTest' => '布尔测试',
 ]);
 ```
-- 调用rule后通过label方法添加
+#### 调用rule后通过label方法添加
 ```
 $validator->rule(['required', 'testRequired2'])->message("{field}不能为空(自定义格式)")->label('自定义标签testRequired2');
 
