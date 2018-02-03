@@ -6,10 +6,11 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class Contains
+ * Class ContainsValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Contains implements Rule
+class ContainsValidator implements Rule
 {
     /**
      * @return string

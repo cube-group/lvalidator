@@ -11,20 +11,50 @@ require __DIR__ . '/../libs/autoload.php';
  */
 class TestLValidator
 {
+    public function test()
+    {
+        $data = [
+            'name' => 'chenqionghe',
+            'age' => '十八',
+            'email' => 'abc',
+            'money' => "abc",
+            'address' => 'beijing',
+            'sex' => 'man',
+            'lang' => 'php',
+        ];
+        $validator = new  LValidator($data);
+        $validator->rules([
+            ['required', 'name'],
+            ['email', 'email'],
+            ['numeric', 'age'],
+            ['length', 'address', ">=", 20],
+            ['in', 'sex', ['男','女']],
+            ['notIn', 'lang', ['php', 'go','java']],
+        ]);
+        //验证触发方法
+        if (!$validator->validate()) {
+            var_dump($validator->errors());//打印所有错误(返回数组)
+            var_dump($validator->errorString());//打印错误字符串
+        }
+
+    }
+
+
     /**
      * 自定义错误消息
      */
     public function TestMessage()
     {
         var_dump("自定义错误消息");
-        $data = ['name' => '', 'age' => ''];
+        $data = ['name' => '', 'age' => 'a',];
         $label = ['name' => '姓名'];
         $val = new LValidator($data, $label);
         $val->rules([
             ['required', "name", 'message' => "姓名不能为空！"],
-            ['required', "age", 'message' => "年龄不能为空！"]
+            ['numeric', "age", 'message' => '{fields}不能为空，年龄必须是数字，非法值{value}！'],
         ]);
         if (!$val->validate()) {
+            var_dump($val->errors());
             var_dump($val->errorString());
         }
     }
@@ -51,128 +81,398 @@ class TestLValidator
         }
     }
 
-
-    public function exe()
+    /**
+     * 测试url规则
+     */
+    public function testUrl()
     {
-        //快速验证单个规则
-        $this->print('验证url', LValidator::isUrl("http://www.baidu.com"));
-        $this->print('验证邮箱', LValidator::isEmail("abc@abc.com"));
-        $this->print('验证英文字母', LValidator::isAlpha('abc'));
-        $this->print('验证英文字母+数字', LValidator::isAlphaNum('123abc'));
-        $this->print('验证英文字母+数字+破折号+下划线', LValidator::isSlug('123abc_'));
-        $this->print('验证日期格式', LValidator::isDate('2010'));
-        $this->print('验证大陆电话', LValidator::isTel('2010'));
-        $this->print('验证车牌号', LValidator::isCarPlate('abcd'));
-        $this->print('验证银行卡号', LValidator::isBankCard('123456'));
-
-        //批量验证
-        $data = [
-            'name' => 'chenqionghe',
-            'age' => '18',
-            'money' => '一百',
-            'email' => 'abc',
-            'alphaTest' => 'ads111',
-            'boolTest' => 'bool',
-            'containsTest' => 'containsTest',
-            'ipTest' => 'ipTest',
-            'lengthTest' => 'lengthTest',
-            'inTest' => 'inTest',
-            'notInTest' => 'notInTest',
-            'urlTest' => 'urlTest',
-            'dateTest' => 'dateTest',
-            'dateAfterTest' => '2017-05-01',
-            'dateBeforeTest' => '2017-05-01',
-            'sameTest' => 'cqh',
-            'sameTest2' => 'cqh',
-            'regexTest' => 'abc',
-            'muiti' => [
-                'name' => '',
-            ]
-        ];
-        $labels = [
-            'name' => '名字',
-            'age' => '年龄',
-            'testRequired' => '测试必传',
-            'dateTest' => '日期测试',
-        ];
-        $validator = new  LValidator($data, $labels);
-        //添加一条验证规则,验证必传
-        $validator->rule(['required', 'testRequired']);
-        //批量添加验证规则
-        $validator->rules([
-            //验证整数
-            ['integer', 'money',],
-            //验证数字, 支持指定message参数指定自定义显示, 指定label自定义字段标签
-            ['numeric', 'money', 'message' => '{field}必须是数字(自定义显示)'],
-            //验证bool值
-            ['boolean', 'boolTest'],
-            //验证邮箱
-            ['email', 'email'],
-            //验证字母
-            ['alpha', 'alphaTest'],
-            //验证字符串包含
-            ['contains', 'containsTest', 'abc'],
-            //验证ip
-            ['ip', 'ipTest'],
-            //验证长度
-            ['length', 'lengthTest', ">=", 20],
-            //验证值范围
-            ['in', 'inTest', ['a', 'b', 'c']],
-            //验证值不在范围
-            ['notIn', 'notInTest', ['notInTest']],
-            //验证url地址
-            ['url', 'urlTest'],
-            //验证日期格式
-            ['date', 'dateTest'],
-            //验证日期必须在指定日期之后
-            ['dateAfter', 'dateAfterTest', '2017-10-01'],
-            //验证日期必须在指定日期之前
-            ['dateBefore', 'dateBeforeTest', '2017-05-01'],
-            //验证值必须相同
-            ['same', 'sameTest', 'name'],
-            //对比验证
-            ['compare', 'age', ">", 18],//age > 18
-            //自定义正则验证
-            ['regex', 'regexTest', '/^cqh.*/'],
-            //指定php函数验证
-            ['func', 'name', 'is_array'],
-            //指定类方法验证
-            ['func', 'name', [\libs\Utils\Arrays::class, 'isMultidim']],
-            //闭包验证
-            [function ($field, $value) {
-                return $value == 'helloWorld';
-            }, 'name', 'message' => '名字不是helloWorld'],
-            //.给数组内部元素添加规则
-            ['required', 'multi.name'],
-
+        $data = ['url1' => 'abcdef', 'url2' => 'http://www.baidu.com'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['url', "url1"],
+            ['url', "url2"],
         ]);
-        //手动设置字段映射标签
-        $validator->labels([
-            'email' => '邮箱地址',
-            'alphaTest' => '数字测试',
-            'boolTest' => '布尔测试',
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+
+    /**
+     * 测试必须是邮箱
+     */
+    public function testEmail()
+    {
+        $data = ['email1' => 'abcdef', 'email2' => 'chenqionghe@sina.com'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['email', "email1"],
+            ['email', "email2"],
         ]);
-        //为验证消息自定义错误格式和自定义标签
-        $validator->rule(['required', 'testRequired2'])->message("{field}不能为空(自定义格式)")->label('自定义标签testRequired2');
-        //验证触发方法
-        if ($validator->validate()) {
-            $this->printAll("验证成功");
-        } else {
-            $this->printAll("验证失败, 错误信息", $validator->errors());
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+
+    /**
+     * 验证必须是数字
+     */
+    public function testNumeric()
+    {
+        $data = ['number1' => '123', 'number2' => 'abcd'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['numeric', "number1"],
+            ['numeric', "number2"],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+
+    /**
+     * 测试必须是英文字母
+     */
+    public function testAlpha()
+    {
+        $data = ['name1' => '123', 'name2' => 'abcd'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['alpha', "name1"],
+            ['alpha', "name2"],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
         }
     }
 
     /**
-     * @param $title
-     * @param array ...$args
+     * 验证只能是英文字母和数字
      */
-    private function printAll($title, ...$args)
+    public function testAlphaNum()
     {
-        echo "<h3>{$title}</h3>";
-        foreach ($args as $arg) {
-            var_dump($arg);
+        $data = ['name1' => '123abc___', 'name2' => '123abc'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['alphaNum', "name1"],
+            ['alphaNum', "name2"],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
         }
     }
+
+    /**
+     * 验证只能是英文字母、数字、下划线、破折号
+     */
+    public function testSlug()
+    {
+        $data = ['name1' => '123abc___', 'name2' => '123abc...'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['slug', "name1"],
+            ['slug', "name2"],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+    /**
+     * 验证只能是有效的时间格式
+     */
+    public function testDate()
+    {
+        $data = ['date1' => '123abc___', 'date2' => '20180201', 'date3' => '20180201 12:00'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['date', "date1"],
+            ['date', "date2"],
+            ['date', "date3"],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+    /**
+     * 验证必须是有效的大陆电话
+     */
+    public function testTel()
+    {
+        $data = ['tel1' => '1234abcd', 'tel2' => '089862222222'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['tel', "tel1"],
+            ['tel', "tel2"],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+    /**
+     * 验证必须是手机号
+     */
+    public function testMobile()
+    {
+        $data = ['mobile1' => '1234abcd', 'mobile2' => '13188888888'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['mobile', "mobile1"],
+            ['mobile', "mobile2"],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+    /**
+     * 验证必须是合法的json
+     */
+    public function testJson()
+    {
+        $data = ['json1' => 'abcdef', 'mobile2' => '{"name":"chenqionghe","age":18}'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['json', "json1"],
+            ['json', "json2"],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+    /**
+     * 验证必须是ip地址
+     */
+    public function testIp()
+    {
+        $data = ['ip1' => 'abcdef', 'ip2' => '127.0.0.1'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['ip', "ip1"],
+            ['ip', "ip2"],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+    /**
+     * 验证必须是布尔值
+     */
+    public function testBool()
+    {
+        $data = ['eq' => 'abcdef', 'mobile2' => false];
+        $val = new LValidator($data);
+        $val->rules([
+            ['bool', "bool1"],
+            ['bool', "bool2"],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+    /**
+     * 验证指定字段必须相同
+     */
+    public function testSame()
+    {
+        $data = ['name1' => 'abc', 'name2' => 'abcd'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['same', "name1", 'name2'],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+    /**
+     * 验证指定字段必须相同
+     */
+    public function testDiff()
+    {
+        $data = ['name1' => 'abc', 'name2' => 'abc'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['diff', "name1", 'name2'],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+
+    /**
+     * 验证长度
+     */
+    public function testLength()
+    {
+        $data = ['name' => 'a'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['length', 'name', ">", 18],//name长度 > 18
+            ['length', 'name', ">=", 18],//name长度 >= 18
+            ['length', 'name', "<", 18],//name长度 < 18
+            ['length', 'name', "<=", 18],//name长度 <= 18
+            ['length', 'name', "==", 18],//name长度 == 18
+            ['length', 'name', "===", 18],//name长度 === 18
+            ['length', 'name', "!=", 18],//name长度 != 18
+            ['length', 'name', "!==", 18],//name长度 !== 18
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+    /**
+     * 对比验证
+     */
+    public function testCompare()
+    {
+        $data = ['age' => 18];
+        $val = new LValidator($data);
+        $val->rules([
+            ['compare', 'age', ">", 18],
+            ['compare', 'age', ">=", 18],
+            ['compare', 'age', "<", 18],
+            ['compare', 'age', "<=", 18],
+            ['compare', 'age', "==", 18],
+            ['compare', 'age', "===", 18],
+            ['compare', 'age', "!=", 18],
+            ['compare', 'age', "!==", 18],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+    /**
+     * 包含验证
+     */
+    public function testContains()
+    {
+        $data = ['name1' => "abcd", 'name2' => 'cqhabc'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['contains', ['name1', 'name2'], "cqh"],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+    /**
+     * 验证必须在某个范围
+     */
+    public function testIn()
+    {
+        $data = ['name' => "abc", 'lang' => 'abcd'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['in', "name", ['jack', 'rose', 'james']],
+            ['in', "lang", ['php', 'java', 'go']],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+    /**
+     * 验证必须不在某个范围
+     */
+    public function testNotIn()
+    {
+        $data = ['name' => "abc", 'lang' => 'php'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['notIn', "name", ['jack', 'rose', 'james']],
+            ['notIn', "lang", ['php', 'java', 'go']],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+    /**
+     * 正则验证
+     */
+    public function testRegex()
+    {
+        $data = ['name1' => "abc", 'name2' => 'cqhabc'];
+        $val = new LValidator($data);
+        $val->rules([
+            ['regex', ['name1', 'name2'], '/^cqh.*/'],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+
+    /** 闭包验证 */
+    public function testClosure()
+    {
+        $data = ['name1' => "abc"];
+        $val = new LValidator($data);
+        $val->rules([
+            [function ($field, $value) {
+                return $value == 'helloWorld';
+            }, 'name1', 'message' => '名字不是helloWorld'],
+
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+    }
+
+    /**
+     * 自定义php函数验证
+     */
+    public function testFunc()
+    {
+        $data = ['name' => "abc"];
+        $val = new LValidator($data);
+        $val->rules([
+            ['func', 'name', 'is_array'],
+            ['func', 'name', [\libs\Utils\Arrays::class, 'isMultidim']],
+        ]);
+        if (!$val->validate()) {
+            var_dump($val->errorString());
+        }
+
+    }
+
+    /**
+     * 验证数组内部元素
+     */
+    public function testArray()
+    {
+        $data = [
+            'a' => 'b',
+            'demo' => [
+                'name' => '',
+                'age' => '十八'
+            ]
+        ];
+        $validator = new  LValidator($data);
+        $validator->rules([
+            ['required', 'demo.name'],//$data['demo']['name']必传
+            ['integer', 'demo.age', 'message' => "哈哈"],//$data['demo']['age']必须是整数
+        ]);
+        if ($validator->validate()) {
+            //验证成功
+        } else {
+            var_dump($validator->errorString());
+        }
+    }
+
+
 }
 
 spl_autoload_register(function ($className) {
@@ -187,6 +487,29 @@ spl_autoload_register(function ($className) {
     }
 });
 $c = new TestLValidator();
-//$c->exe();
+$c->test();
 $c->TestMessage();
 $c->TestRequired();
+$c->testUrl();
+$c->testEmail();
+$c->testAlpha();
+$c->testAlphaNum();
+$c->testSlug();
+$c->testDate();
+$c->testTel();
+$c->testMobile();
+$c->testJson();
+$c->testIp();
+$c->testBool();
+$c->testSame();
+$c->testDiff();
+$c->testNumeric();
+$c->testLength();
+$c->testCompare();
+$c->testIn();
+$c->testNotIn();
+$c->testContains();
+$c->testRegex();
+$c->testClosure();
+$c->testFunc();
+

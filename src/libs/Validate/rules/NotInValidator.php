@@ -6,17 +6,18 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class Regex
+ * Class NotInValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Regex implements Rule
+class NotInValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}格式无效";
+        return "{field}不能在范围%s, 非法值{value}";
     }
 
     /**
@@ -28,7 +29,7 @@ class Regex implements Rule
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        return preg_match($params[0], $value);
+        return !InValidator::validate($field, $value, $params, $validator);
     }
 
 }

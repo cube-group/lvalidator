@@ -3,22 +3,22 @@
 namespace libs\Validate;
 
 use DateTime;
-use libs\Orm\ArrayTrait;
+use libs\Utils\ArrayTrait;
 use libs\Utils\Arrays;
 use libs\Utils\Strings;
 use ArrayAccess;
 use IteratorAggregate;
 use JsonSerializable;
-use libs\Validate\rules\Alpha;
-use libs\Validate\rules\AlphaNum;
-use libs\Validate\rules\BankCard;
-use libs\Validate\rules\CarPlate;
-use libs\Validate\rules\Date;
-use libs\Validate\rules\Email;
-use libs\Validate\rules\Ip;
-use libs\Validate\rules\Slug;
-use libs\Validate\rules\Tel;
-use libs\Validate\rules\Url;
+use libs\Validate\rules\AlphaValidator;
+use libs\Validate\rules\AlphaNumValidator;
+use libs\Validate\rules\CarPlateValidator;
+use libs\Validate\rules\DateValidator;
+use libs\Validate\rules\EmailValidator;
+use libs\Validate\rules\IpValidator;
+use libs\Validate\rules\MobileValidator;
+use libs\Validate\rules\SlugValidator;
+use libs\Validate\rules\TelValidator;
+use libs\Validate\rules\UrlValidator;
 use Serializable;
 use Countable;
 
@@ -225,7 +225,7 @@ class LValidator implements ArrayAccess, IteratorAggregate, JsonSerializable, Se
      */
     public static function getRuleClass($rule)
     {
-        $class = __NAMESPACE__ . '\\rules\\' . ucfirst($rule);
+        $class = __NAMESPACE__ . '\\rules\\' . ucfirst($rule) . 'Validator';
         if (!class_exists($class)) {
             throw new \Exception("{$class} not exist");
         }
@@ -449,7 +449,7 @@ class LValidator implements ArrayAccess, IteratorAggregate, JsonSerializable, Se
      */
     public static function isUrl($value)
     {
-        return Url::validate('', $value, [], self::getInstance());
+        return UrlValidator::validate('', $value, [], self::getInstance());
     }
 
 
@@ -461,7 +461,7 @@ class LValidator implements ArrayAccess, IteratorAggregate, JsonSerializable, Se
      */
     public static function isEmail($value)
     {
-        return Email::validate('', $value, [], self::getInstance());
+        return EmailValidator::validate('', $value, [], self::getInstance());
     }
 
     /**
@@ -472,7 +472,7 @@ class LValidator implements ArrayAccess, IteratorAggregate, JsonSerializable, Se
      */
     public static function isIp($value)
     {
-        return Ip::validate('', $value, [], self::getInstance());
+        return IpValidator::validate('', $value, [], self::getInstance());
     }
 
     /**
@@ -483,7 +483,7 @@ class LValidator implements ArrayAccess, IteratorAggregate, JsonSerializable, Se
      */
     public static function isAlpha($value)
     {
-        return Alpha::validate('', $value, [], self::getInstance());
+        return AlphaValidator::validate('', $value, [], self::getInstance());
     }
 
     /**
@@ -494,7 +494,7 @@ class LValidator implements ArrayAccess, IteratorAggregate, JsonSerializable, Se
      */
     public static function isAlphaNum($value)
     {
-        return AlphaNum::validate('', $value, [], self::getInstance());
+        return AlphaNumValidator::validate('', $value, [], self::getInstance());
     }
 
     /**
@@ -505,7 +505,7 @@ class LValidator implements ArrayAccess, IteratorAggregate, JsonSerializable, Se
      */
     public static function isSlug($value)
     {
-        return Slug::validate('', $value, [], self::getInstance());
+        return SlugValidator::validate('', $value, [], self::getInstance());
     }
 
     /**
@@ -516,7 +516,7 @@ class LValidator implements ArrayAccess, IteratorAggregate, JsonSerializable, Se
      */
     public static function isDate($value)
     {
-        return Date::validate('', $value, [], self::getInstance());
+        return DateValidator::validate('', $value, [], self::getInstance());
     }
 
     /**
@@ -527,7 +527,7 @@ class LValidator implements ArrayAccess, IteratorAggregate, JsonSerializable, Se
      */
     public static function isTel($value)
     {
-        return Tel::validate('', $value, [], self::getInstance());
+        return TelValidator::validate('', $value, [], self::getInstance());
     }
 
     /**
@@ -538,7 +538,7 @@ class LValidator implements ArrayAccess, IteratorAggregate, JsonSerializable, Se
      */
     public static function isCarPlate($value)
     {
-        return CarPlate::validate('', $value, [], self::getInstance());
+        return CarPlateValidator::validate('', $value, [], self::getInstance());
     }
 
     /**
@@ -547,8 +547,19 @@ class LValidator implements ArrayAccess, IteratorAggregate, JsonSerializable, Se
      * @param $value
      * @return mixed
      */
-    public static function isBankCard($value)
+    public static function isBankcard($value)
     {
-        return BankCard::validate('', $value, [], self::getInstance());
+        return BankcardValidator::validate('', $value, [], self::getInstance());
+    }
+
+    /**
+     * 验证是否是手机号
+     *
+     * @param $value
+     * @return bool
+     */
+    public function isMobile($value)
+    {
+        return MobileValidator::validate('', $value, [], self::getInstance());
     }
 }

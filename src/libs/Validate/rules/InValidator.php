@@ -3,21 +3,21 @@
 namespace libs\Validate\rules;
 
 use libs\Validate\LValidator;
-use DateTime;
 use libs\Validate\Rule;
 
 /**
- * Class Date
+ * Class InValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Date implements Rule
+class InValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}是无效的日期格式";
+        return '{field}必须在%s范围内';
     }
 
     /**
@@ -29,10 +29,14 @@ class Date implements Rule
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        if ($value instanceof DateTime) {
-            return true;
+        $isAssoc = array_values($params[0]) !== $params[0];
+        if ($isAssoc) {
+            $params[0] = array_keys($params[0]);
         }
-        return strtotime($value) !== false;
+        $strict = false;
+        if (isset($params[1])) {
+            $strict = $params[1];
+        }
+        return in_array($value, $params[0], $strict);
     }
-
 }

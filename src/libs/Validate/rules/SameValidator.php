@@ -6,17 +6,18 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class Ip
+ * Class SameValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Ip implements Rule
+class SameValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}是无效IP地址";
+        return "{field}必须和%s相同";
     }
 
     /**
@@ -28,6 +29,7 @@ class Ip implements Rule
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        return filter_var($value, \FILTER_VALIDATE_IP) !== false;
+        $field2 = $params[0];
+        return $value == $validator->$field2;
     }
 }

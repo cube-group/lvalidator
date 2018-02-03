@@ -1,22 +1,23 @@
 <?php
 
 namespace libs\Validate\rules;
-
 use libs\Validate\LValidator;
+use DateTime;
 use libs\Validate\Rule;
 
 /**
- * Class BankCard
+ * Class DateBeforeValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class BankCard implements Rule
+class DateBeforeValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}非法";
+        return "日期必须在%s之前";
     }
 
     /**
@@ -24,12 +25,14 @@ class BankCard implements Rule
      * @param $value
      * @param array $params
      * @param LValidator $validator
-     * @return mixed
+     * @return bool
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        if (strlen($value) > 19 || strlen($value) < 12) return false;
-        return !empty($value) ? preg_match('/^[0-9][0-9]{11}[0-9]*$/', $value) : false;
+        $time = ($value instanceof DateTime) ? $value->getTimestamp() : strtotime($value);
+        $beforeTime = ($params[0] instanceof DateTime) ? $params[0]->getTimestamp() : strtotime($params[0]);
+
+        return $time < $beforeTime;
     }
 
 }

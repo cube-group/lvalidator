@@ -6,17 +6,18 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class In
+ * Class AlphaNumValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class In implements Rule
+class AlphaNumValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return '{field}必须在%s范围内';
+        return "{field}只能包括英文字母(a-z)和数字(0-9)";
     }
 
     /**
@@ -28,14 +29,6 @@ class In implements Rule
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        $isAssoc = array_values($params[0]) !== $params[0];
-        if ($isAssoc) {
-            $params[0] = array_keys($params[0]);
-        }
-        $strict = false;
-        if (isset($params[1])) {
-            $strict = $params[1];
-        }
-        return in_array($value, $params[0], $strict);
+        return preg_match('/^([a-z0-9])+$/i', $value);
     }
 }

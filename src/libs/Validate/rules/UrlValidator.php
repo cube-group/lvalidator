@@ -1,22 +1,23 @@
 <?php
 
 namespace libs\Validate\rules;
+
 use libs\Validate\LValidator;
-use DateTime;
 use libs\Validate\Rule;
 
 /**
- * Class DateAfter
+ * Class UrlValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class DateAfter implements Rule
+class UrlValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}日期必须在%s之后, 非法值{value}";
+        return "{field}是无效的URL,非法值{value}";
     }
 
     /**
@@ -28,9 +29,13 @@ class DateAfter implements Rule
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        $time = ($value instanceof DateTime) ? $value->getTimestamp() : strtotime($value);
-        $afterTime = ($params[0] instanceof DateTime) ? $params[0]->getTimestamp() : strtotime($params[0]);
-        return $time > $afterTime;
+        $value = trim($value);
+        $validUrlPrefixes = ['http://', 'https://', 'ftp://'];
+        foreach ($validUrlPrefixes as $prefix) {
+            if (strpos($value, $prefix) !== false) {
+                return filter_var($value, \FILTER_VALIDATE_URL) !== false;
+            }
+        }
+        return false;
     }
-
 }

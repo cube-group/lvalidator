@@ -6,12 +6,11 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * 对比验证
- *
- * Class Compare
+ * Class CompareValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Compare implements Rule
+class CompareValidator implements Rule
 {
     /**
      * @return string

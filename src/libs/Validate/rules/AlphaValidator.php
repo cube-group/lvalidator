@@ -6,17 +6,18 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class Url
+ * Class AlphaValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Url implements Rule
+class AlphaValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}是无效的URL,非法值{value}";
+        return "{field}只能包括英文字母(a-z)";
     }
 
     /**
@@ -24,17 +25,11 @@ class Url implements Rule
      * @param $value
      * @param array $params
      * @param LValidator $validator
-     * @return bool
+     * @return mixed
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        $value = trim($value);
-        $validUrlPrefixes = ['http://', 'https://', 'ftp://'];
-        foreach ($validUrlPrefixes as $prefix) {
-            if (strpos($value, $prefix) !== false) {
-                return filter_var($value, \FILTER_VALIDATE_URL) !== false;
-            }
-        }
-        return false;
+        return preg_match('/^([a-z])+$/i', $value);
     }
+
 }

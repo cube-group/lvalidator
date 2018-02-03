@@ -6,17 +6,18 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class AlphaNum
+ * Class NumericValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class AlphaNum implements Rule
+class NumericValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}只能包括英文字母(a-z)和数字(0-9)";
+        return "{field}只能是数字";
     }
 
     /**
@@ -28,6 +29,7 @@ class AlphaNum implements Rule
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        return preg_match('/^([a-z0-9])+$/i', $value);
+        return is_numeric($value);
     }
+
 }

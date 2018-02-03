@@ -6,17 +6,18 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class Func
+ * Class JsonValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Func implements Rule
+class JsonValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}不能通过方法%s";
+        return "{field}不是合法的json结构";
     }
 
     /**
@@ -24,12 +25,11 @@ class Func implements Rule
      * @param $value
      * @param array $params
      * @param LValidator $validator
-     * @return bool
+     * @return mixed
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        $funcName = array_shift($params);
-        return call_user_func($funcName, $value);
+        return is_array(json_decode($value, true));
     }
 
 }

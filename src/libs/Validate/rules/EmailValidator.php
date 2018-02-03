@@ -6,17 +6,18 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class Different
+ * Class EmailValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Different implements Rule
+class EmailValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}必须和%s不同";
+        return "{field}是无效邮箱, 非法值{value}";
     }
 
     /**
@@ -28,7 +29,6 @@ class Different implements Rule
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        $field2 = $params[0];
-        return $value != $validator->$field2;
+        return filter_var($value, \FILTER_VALIDATE_EMAIL) !== false;
     }
 }

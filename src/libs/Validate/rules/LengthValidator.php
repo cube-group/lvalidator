@@ -1,22 +1,23 @@
 <?php
 
 namespace libs\Validate\rules;
+
 use libs\Validate\LValidator;
-use DateTime;
 use libs\Validate\Rule;
 
 /**
- * Class DateBefore
+ * Class LengthValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class DateBefore implements Rule
+class LengthValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "日期必须在%s之前";
+        return "{field}长度必须%s%s";
     }
 
     /**
@@ -28,10 +29,6 @@ class DateBefore implements Rule
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        $time = ($value instanceof DateTime) ? $value->getTimestamp() : strtotime($value);
-        $beforeTime = ($params[0] instanceof DateTime) ? $params[0]->getTimestamp() : strtotime($params[0]);
-
-        return $time < $beforeTime;
+        return CompareValidator::validate($field, mb_strlen($value), $params, $validator);
     }
-
 }

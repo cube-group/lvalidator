@@ -3,20 +3,22 @@
 namespace libs\Validate\rules;
 
 use libs\Validate\LValidator;
+use DateTime;
 use libs\Validate\Rule;
 
 /**
- * Class Alpha
+ * Class DateValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Alpha implements Rule
+class DateValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}只能包括英文字母(a-z)";
+        return "{field}是无效的日期格式";
     }
 
     /**
@@ -24,11 +26,14 @@ class Alpha implements Rule
      * @param $value
      * @param array $params
      * @param LValidator $validator
-     * @return mixed
+     * @return bool
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        return preg_match('/^([a-z])+$/i', $value);
+        if ($value instanceof DateTime) {
+            return true;
+        }
+        return strtotime($value) !== false;
     }
 
 }

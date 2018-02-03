@@ -6,17 +6,18 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class Integer
+ * Class SlugValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Integer implements Rule
+class SlugValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}只能是整数(0-9)";
+        return "{field}只能包括英文字母(a-z)、数字(0-9)、破折号和下划线";
     }
 
     /**
@@ -28,9 +29,6 @@ class Integer implements Rule
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        if (isset($params[0]) && (bool)$params[0]) {
-            return preg_match('/^-?([0-9])+$/i', $value);
-        }
-        return filter_var($value, \FILTER_VALIDATE_INT) !== false;
+        return preg_match('/^([-a-z0-9_-])+$/i', $value);
     }
 }

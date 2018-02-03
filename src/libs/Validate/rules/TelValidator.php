@@ -6,17 +6,18 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class Email
+ * Class TelValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Email implements Rule
+class TelValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}是无效邮箱, 非法值{value}";
+        return "{field}不是有效的大陆电话";
     }
 
     /**
@@ -24,10 +25,11 @@ class Email implements Rule
      * @param $value
      * @param array $params
      * @param LValidator $validator
-     * @return bool
+     * @return mixed
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        return filter_var($value, \FILTER_VALIDATE_EMAIL) !== false;
+        return preg_match('/(\d{4}-|\d{3}-)?(\d{8}|\d{7})/', $value);
     }
+
 }

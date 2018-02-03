@@ -6,10 +6,11 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class Required
+ * Class RequiredValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Required implements Rule
+class RequiredValidator implements Rule
 {
     /**
      * @return string

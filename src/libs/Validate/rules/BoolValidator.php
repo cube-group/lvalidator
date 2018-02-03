@@ -6,17 +6,18 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class NotIn
+ * Class BoolValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class NotIn implements Rule
+class BoolValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}不能在范围%s, 非法值{value}";
+        return '{field}必须是布尔值';
     }
 
     /**
@@ -28,7 +29,7 @@ class NotIn implements Rule
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        return !In::validate($field, $value, $params, $validator);
+        return is_bool($value);
     }
 
 }

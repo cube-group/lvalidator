@@ -2,7 +2,6 @@
 /**
  * Registers an autoload for all the classes in libs\*
  */
-require dirname(__DIR__) . "/vendor/autoload.php";
 spl_autoload_register(function ($className) {
     $namespace = 'libs';
 

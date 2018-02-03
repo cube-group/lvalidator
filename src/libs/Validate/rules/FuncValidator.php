@@ -6,17 +6,18 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class Boolean
+ * Class FuncValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Boolean implements Rule
+class FuncValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return '{field}必须是布尔值';
+        return "{field}不能通过方法%s验证";
     }
 
     /**
@@ -28,7 +29,8 @@ class Boolean implements Rule
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        return is_bool($value);
+        $funcName = array_shift($params);
+        return call_user_func($funcName, $value);
     }
 
 }

@@ -6,17 +6,18 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class Length
+ * Class MobileValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Length implements Rule
+class MobileValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}长度必须%s%s";
+        return "{field}不是有效的手机号码";
     }
 
     /**
@@ -28,6 +29,6 @@ class Length implements Rule
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        return Compare::validate($field, mb_strlen($value), $params, $validator);
+        return preg_match('/^(\+?86-?|0)?1[0-9]{10}$/', $value);
     }
 }

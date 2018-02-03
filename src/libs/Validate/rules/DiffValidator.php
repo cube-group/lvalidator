@@ -6,17 +6,18 @@ use libs\Validate\LValidator;
 use libs\Validate\Rule;
 
 /**
- * Class Numeric
+ * Class DiffValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class Numeric implements Rule
+class DiffValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}只能是数字";
+        return "{field}必须和%s不同";
     }
 
     /**
@@ -28,7 +29,7 @@ class Numeric implements Rule
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        return is_numeric($value);
+        $field2 = $params[0];
+        return $value != $validator->$field2;
     }
-
 }

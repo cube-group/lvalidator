@@ -1,22 +1,23 @@
 <?php
 
 namespace libs\Validate\rules;
-
 use libs\Validate\LValidator;
+use DateTime;
 use libs\Validate\Rule;
 
 /**
- * Class CarPlate
+ * Class DateAfterValidator
+ * @author chenqionghe
  * @package libs\Validate\rules
  */
-class CarPlate implements Rule
+class DateAfterValidator implements Rule
 {
     /**
      * @return string
      */
     public static function message()
     {
-        return "{field}非法";
+        return "{field}日期必须在%s之后, 非法值{value}";
     }
 
     /**
@@ -24,11 +25,13 @@ class CarPlate implements Rule
      * @param $value
      * @param array $params
      * @param LValidator $validator
-     * @return mixed
+     * @return bool
      */
     public static function validate($field, $value, $params = [], LValidator $validator)
     {
-        return (bool)preg_match('/^[\x{4e00}-\x{9fa5}]{1}[a-zA-Z]{1}[a-zA-Z_0-9]{4}[a-zA-Z_0-9_\x{4e00}-\x{9fa5}]$/u', $value);
+        $time = ($value instanceof DateTime) ? $value->getTimestamp() : strtotime($value);
+        $afterTime = ($params[0] instanceof DateTime) ? $params[0]->getTimestamp() : strtotime($params[0]);
+        return $time > $afterTime;
     }
 
 }
