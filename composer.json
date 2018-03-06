@@ -20,7 +20,8 @@
   },
   "autoload": {
     "psr-4": {
-      "libs\\Utils\\": "src"
+      "libs\\Utils\\": "src",
+      "libs\\Validate\\": "src"
     }
   },
   "minimum-stability": "dev"
