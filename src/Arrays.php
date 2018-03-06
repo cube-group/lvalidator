@@ -2,8 +2,6 @@
 
 namespace libs\Utils;
 
-use libs\Orm\LActiveRecord;
-
 /**
  * Class Arrays
  * @package libs\Utils
